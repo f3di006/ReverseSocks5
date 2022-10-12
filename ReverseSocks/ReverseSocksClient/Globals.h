@@ -11,7 +11,7 @@
 using namespace std;
 extern char NewConnexion;
 extern char ConnexionData;
-extern const char* bnr;
+extern unsigned char bnr[4838];
 extern char* granted;
 
 extern std::vector<std::future<void>> fu;
@@ -23,7 +23,8 @@ extern mutex mc;//for list
 struct connexion_details {
 
     long long unsigned int id;
-    char d[6];//ip port
+    char d[2000];//host port
+    int sizep;
 
 
 };
@@ -31,7 +32,7 @@ struct connexion_details {
 struct socket_details {
 
     long long unsigned int id;
-    SOCKET sc;//ip port
+    SOCKET sc;
 
 };
 extern list<socket_details*> clients;

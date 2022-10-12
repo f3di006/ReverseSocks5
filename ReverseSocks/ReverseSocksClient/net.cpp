@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-void new_connection(char* buff, long long int id);
+void new_connection(char* buff, long long int id,int size);
 void ExitPr() {
 
 
@@ -129,7 +129,7 @@ int recvp(char* buffer, int buff_len) {
     if (recvit(s, buffer, packet_len) == SOCKET_ERROR) { ExitPr(); }
 
 
-    if (order == NewConnexion) { new_connection(buffer, id); }
+    if (order == NewConnexion) { new_connection(buffer, id,packet_len); }
     else if (order == ConnexionData) { parse_packet(buffer, packet_len, id); }
     else { cout << "unk !\n"; }
     return 0;
