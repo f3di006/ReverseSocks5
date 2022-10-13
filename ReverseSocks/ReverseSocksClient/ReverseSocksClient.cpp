@@ -108,7 +108,7 @@ int main(int argc,char *argv[])
 {
 
     if (argc < 2) { usage(); }
-    cout << bnr<<"\n";
+    cout << bnr << "\n\n\t\t" << "https://github.com/f3di006 \n\n\n\nConnecting To the Server ...\n";
     string ip = argv[1];
     string port_s = argv[2];
     unsigned short port = (unsigned short)std::stoi(port_s);
