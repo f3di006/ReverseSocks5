@@ -218,7 +218,7 @@ int main(int argc,char *argv[])
         return -1;
     }
     cout << bnr<<"\n\n\t\t"<<"https://github.com/f3di006\n";
-    if (argc < 2) { cout << "usage : ReverseSocksServer.exe port\n"; Sleep(10000); }
+    if (argc < 2) { cout << "usage : ReverseSocksServer.exe port\n"; Sleep(10000); return -1; }
     string port = argv[1];
     port_listen = std::stoi(port);
 
