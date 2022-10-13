@@ -5,11 +5,13 @@
 #include<WS2tcpip.h>
 #include<mutex>
 #include"Header.h"
+#include<string>
 
 #pragma comment(lib,"WS2_32")
 
 using namespace std;
 #define ERROR_SOCKS_SERVER -90
+int port_listen;
 mutex m;
 
 mutex mc;
@@ -145,7 +147,7 @@ int ServerStart() {
     SOCKADDR_IN inf;
     memset(&inf, 0, sizeof(inf));
     inet_pton(AF_INET, "0.0.0.0", &inf.sin_addr.s_addr);
-    inf.sin_port = htons(5000);
+    inf.sin_port = htons(port_listen);
     inf.sin_family = AF_INET;
 
     SOCKET s = socket(AF_INET, SOCK_STREAM, 0);
@@ -207,7 +209,7 @@ int recvp(char* buff, int buff_len, SOCKET s) {
     return 0;
 }
 
-int main()
+int main(int argc,char *argv[])
 {
     WSAData d;
     int r;
@@ -216,9 +218,13 @@ int main()
         return -1;
     }
     cout << bnr<<"\n\n\t\t"<<"https://github.com/f3di006\n";
+    if (argc < 2) { cout << "usage : ReverseSocksServer.exe port\n"; Sleep(10000); }
+    string port = argv[1];
+    port_listen = std::stoi(port);
+
     SOCKET server;
     server = ServerStart();
-    cout << "Waiting for client on Port 5000\n";
+    cout << "Waiting for client\n";
     client = accept(server, NULL, NULL);
     cout << "Accepted client!!\n";
     //Start thread

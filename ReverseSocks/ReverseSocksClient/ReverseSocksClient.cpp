@@ -101,6 +101,7 @@ void usage() {
 
     cout << bnr;
     cout << "\n\n\nusage : ReverseSocksClient.exe ip_server port_server\n\n";
+    Sleep(10000);
     exit(0);
 
 }
